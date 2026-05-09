@@ -4,6 +4,8 @@ require('./src/config/db')
 const express = require('express')
 
 const peliculasRouter = require('./src/routes/peliculas')
+const webhooksRouter = require('./src/routes/webhooks')
+
 const { obtenerEstadisticas } = require('./src/controllers/peliculasController')
 const errorHandler = require('./src/middleware/errorHandler')
 
@@ -13,6 +15,8 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 
 app.use('/api/peliculas', peliculasRouter)
+
+app.use('/webhooks', webhooksRouter)
 
 app.get('/api/estadisticas', obtenerEstadisticas)
 
