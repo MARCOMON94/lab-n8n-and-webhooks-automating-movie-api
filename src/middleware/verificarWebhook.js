@@ -18,6 +18,10 @@ const verificarWebhook = (req, res, next) => {
     .update(JSON.stringify(req.body))
     .digest('hex')
 
+    console.log('BODY RECIBIDO:', JSON.stringify(req.body))
+console.log('FIRMA RECIBIDA:', firma)
+console.log('FIRMA ESPERADA:', firmaEsperada)
+
   try {
     const firmaBuffer = Buffer.from(firma, 'utf8')
     const firmaEsperadaBuffer = Buffer.from(firmaEsperada, 'utf8')
